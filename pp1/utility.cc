@@ -75,11 +75,5 @@ void ParseCommandLine(int argc, char *argv[]) {
   for (int i = 2; i < argc; i++)
     SetDebugForKey(argv[i], true);
 
-  // string source_file = argv[1];
-  // unsigned from = source_file.find_last_of("/") + 1;
-  // unsigned to = source_file.find_last_of(".");
-  // string output = source_file.substr(from, to-from) + ".out";
-  // freopen(argv[1], "r", stdin);
-  // freopen(output.c_str(), "w", stdout);
 }
 

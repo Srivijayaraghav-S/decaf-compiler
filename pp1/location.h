@@ -9,35 +9,21 @@
 
 #ifndef YYLTYPE
 
-/* Typedef: yyltype
- * ----------------
- * Defines the struct type that is used by the scanner to store
- * position information about each lexeme scanned.
- */
+
 typedef struct yyltype
 {
-    int timestamp;                 // you can ignore this field
+    int timestamp;                 
     int first_line, first_column;
     int last_line, last_column;      
-    char *text;                    // you can also ignore this field
+    char *text;                    
 } yyltype;
 
 #define YYLTYPE yyltype
 
 
-/* Global variable: yylloc
- * ------------------------
- * The global variable holding the position information about the
- * lexeme just scanned.
- */
+
 extern struct yyltype yylloc;
 
-
-/* Function: Join
- * --------------
- * Takes two locations and returns a new location which represents
- * the span from first to last, inclusive.
- */
 inline yyltype Join(yyltype first, yyltype last)
 {
   yyltype combined;

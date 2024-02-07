@@ -27,7 +27,7 @@ void ReportError::OutputError(yyltype *loc, string msg) {
 
 
 void ReportError::Formatted(yyltype *loc, const char *format, ...) {
-    va_list args;
+    va_list args; //variable argument
     char errbuf[2048];
     
     va_start(args, format);

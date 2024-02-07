@@ -23,13 +23,7 @@ static void DoBeforeEachAction();
 #define TAB_SIZE 4
 %}
 
- /* States
- * ------
- * A little winkle on states is the COPY exclusive state which 
- * I added to first match each line and copy it to the list of lines 
- * read before reprocessing it. This allows us to print the entire 
- * line later to provide context on errors.
- */
+ 
 %s N
 %x COPY COMM 
 %option stack
@@ -139,26 +133,7 @@ OPERATOR            ([-+/*%=.,;!<>()[\]{}:])
 .                   { 
                         ReportError::UnrecogChar(&yylloc, yytext[0]); 
                     }
-%%
- /* The closing %% above marks the end of the Rules section and the beginning
- * of the User Subroutines section. All text from here to the end of the
- * file is copied verbatim to the end of the generated lex.yy.c file.
- * This section is where you put definitions of helper functions.
- */
 
-
- /* Function: InitScanner
- * ---------------------
- * This function will be called before any calls to yylex().  It is designed
- * to give you an opportunity to do anything that must be done to initialize
- * the scanner (set global variables, configure starting state, etc.). One
- * thing it already does for you is assign the value of the global variable
- * yy_flex_debug that controls whether flex prints debugging information
- * about each token and what rule was matched. If set to false, no information
- * is printed. Setting it to true will give you a running trail that might
- * be helpful when debugging your scanner. Please be sure the variable is
- * set to false when submitting your final version.
- */
 void InitScanner()
 {
     PrintDebug("lex", "Initializing scanner");
@@ -170,12 +145,6 @@ void InitScanner()
     curColNum = 1;
 }
 
-
- /* Function: DoBeforeEachAction()
- * ------------------------------
- * This function is installed as the YY_USER_ACTION. This is a place
- * to group code common to all actions.
- */
 static void DoBeforeEachAction()
 {
     yylloc.first_line = curLineNum;

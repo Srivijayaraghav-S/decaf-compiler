@@ -1,7 +1,6 @@
 /* File: main.cc
  * -------------
- * This file defines the main() routine for the program and not much else.
- * You should not need to modify this file.
+ * This file defines the main() routine for the program
  */
  
 #include <string.h>
@@ -11,12 +10,7 @@
 #include "scanner.h"
 #include "location.h"
 
-/* Function: PrintOneToken()
- * Usage: PrintOneToken(T_Double, "3.5", val, loc);
- * -----------------------------------------------
- * We supply this function to print information about the tokens returned
- * by the lexer as part of pp1.  Do not modifiy it.
- */
+
 static void PrintOneToken(TokenType token, const char *text, YYSTYPE value,
                           yyltype loc)
 {
@@ -46,12 +40,7 @@ static void PrintOneToken(TokenType token, const char *text, YYSTYPE value,
 }
 
 
-/* Function: main()
- * ----------------
- * Entry point to the entire program.  We parse the command line and turn
- * on any debugging flags requested by the user when invoking the program.
- * InitScanner() is used to set up the scanner.
- */
+
 int main(int argc, char *argv[])
 {
     ParseCommandLine(argc, argv);
